@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app">   
+
+      <li v-for="(val,key,index) in obj" v-bind:key="index">
+        {{ index }}-{{ key }}:{{ val }}
+      </li>
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          obj:{
+            one:'香蕉',
+            two:'苹果',
+            three:'橘子'
+          }
+
+        }
+       
+    } );  
+
+
+</script>
+</html>

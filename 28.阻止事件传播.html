@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      .box1{
+        margin-top:100px;
+        width:200px;
+        height:200px;
+        background:red;
+      }
+      .box2{
+        width:100px;
+        height:100px;
+        background:yellow;
+      }
+    </style>
+</head>
+<body>
+        
+   <div id="app"> 
+
+      <div class="box1" v-on:click="match1">
+          <div class="box2" v-on:click.stop="match2"></button>
+      </div>
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+        },
+        methods: {
+          match1: function () {
+            console.log(123)
+          },
+          match2: function () {
+            console.log(456)
+          }
+        }
+       
+    } );  
+
+//   .stop事件修饰符   
+//   .prevent阻止默认事件
+
+</script>
+</html>

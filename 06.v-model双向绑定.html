@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div id="app">
+        <p>{{message}}</p>
+        <input v-model="message"> <!-- 实时改变输入框数据 -->
+        <br/>
+        <br/>
+        <br/>
+        <p>{{msg}}</p>
+        <input v-model.lazy="msg"> <!-- change事件，输入框数据改变以后失去焦点改变数据 -->
+        <br/>
+        <br/>
+        <br/>
+        <p>{{age}}</p>
+        <input v-model.number="age" type="number">  <!-- 数字类型输入框 -->
+        <br/>
+        <br/>
+        <br/>
+        <input v-model.trim="str">
+        <button v-on:click = "btn">点击查看输入内容</button>   <!-- 过滤用户输入的首尾空白字符,中间的不会过滤 -->
+   </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message: 'hello vue',
+            msg:'哎呦喂',
+            age:26,
+            str:' 这是  为了 什么  ？'
+        },
+        methods: {
+          btn: function () {
+            console.log(vm.str)
+          }
+        }
+
+    })
+</script>
+</html>

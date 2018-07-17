@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+      <div id="wrap">
+
+          <my-btn></my-btn>
+          <br/>
+          <my-span></my-span>
+      </div>  
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+
+var bus = new Vue();  //创建事件中心
+
+Vue.component("my-btn",{
+  template:"<button v-on:click='btn'>点击触发组件2</button>",
+  data:function(){
+      return {
+        msg:0
+      }
+  },
+  methods:{
+      btn:function(){
+        bus.$emit('change','哈哈'); //Hub触发事件
+      }
+  }
+});
+
+Vue.component("my-span",{
+  template:"<span>{{ msg }}</span>",
+  data:function(){
+      return {
+        msg:0
+      }
+  },
+  created() {
+    bus.$on('change', (data) => { 
+        this.msg += 2;
+        console.log(data) //上面的'哈哈'
+    });
+  }
+});
+
+var vm = new Vue({
+    el:'#wrap',
+    data:{
+      foo:'哎呦喂，哈哈！'
+    },
+    methods:{
+      doTheThing:function(data){
+        console.log(data)
+      }
+    }
+})
+
+
+    
+</script>
+</html>

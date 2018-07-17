@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app">   
+
+      <li v-for="(val,key,index) in obj" v-bind:key="index">
+        {{ index }}-{{ key }}-{{ val }}
+      </li>
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          obj:{
+            name:'哈哈'
+          }
+
+        }
+       
+    } );  
+
+// 1.第一种,给对象添加一个属性(响应性的)
+// Vue.set(vm.items, indexOfItem, newValue); 
+
+    // Vue.set(vm.obj, 'age', 26); 
+    // console.log(vm.obj)
+
+// 2.第二种,Object.assign()是es6的语法，用于合并对象
+    vm.obj = Object.assign({}, vm.obj, {
+      age: 27,
+      height: '200cm'
+    })
+
+    console.log(vm.obj)
+
+</script>
+</html>

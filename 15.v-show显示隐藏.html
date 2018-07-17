@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app">   
+
+    <div v-show="onOff">上课进度放缓士大夫计划</div>
+
+    <button v-on:click="btn">切换登录方式</button>
+
+
+<!-- 注意，v-show 不支持 <template> 元素，也不支持 v-else。例如下面： -->
+    <!-- <div v-show="seen">哈哈啊哈</div>
+    <div v-else>123456</div> -->
+    <!-- (就是说v-show是单独使用，后面不能跟v-else使用) -->
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          onOff:true,
+          seen:false,
+          show:true
+
+        },
+        methods:{
+          btn:function(){
+            this.onOff = !this.onOff;
+          }
+        }
+       
+    } );  
+</script>
+</html>

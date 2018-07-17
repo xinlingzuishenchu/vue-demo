@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div id="app">
+            <select v-model="selected">
+              <option disabled value="">请选择</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+            </select>
+            <br/>
+            <span>Selected: {{ selected }}</span>
+            <br/>
+            <button v-on:click="btn">点击</button>
+   </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{ 
+            selected:''
+        },
+        methods: {
+          btn: function () {
+            console.log(vm.selected)
+          }
+        }
+        
+    })
+
+    
+</script>
+</html>

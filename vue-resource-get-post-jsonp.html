@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+  .r{
+      color:red;
+  }
+  .b{
+    background:blue;
+  }
+</style>
+</head>
+<body>
+   <div class="container" id="box">
+      <input type="button" value="get请求" @click="get()" >
+      <input type="button" value="post请求" @click="post()" >
+      <input type="button" value="jsonp跨域请求" @click="jsonp()" >
+     
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript">
+            var vm = new Vue({
+                el: '#box',
+                data: {
+                  msg:"空手道解放和贷款"
+                },
+                methods:{
+                  get:function(){
+                    // 要在服务器环境下打开    http://localhost/vue-demo/00.html 
+                    // 要不然就是跨域请求会报错   params为默认传参对象不可更改
+                    this.$http.get("list.php",{params:{a:12,b:"hh"}}).then(function(res){
+                        console.log(res.data)
+                    },function(res){
+                        console.log(res.data)
+                    })
+                  },
+                  post:function(){
+                    this.$http.post("list.php",{c:"cc",d:24},{emulateJSON: true}).then(function(res){
+                        console.log(res.data)
+                    },function(res){
+                        console.log(res.data)
+                    })
+                  },
+                  jsonp:function(){
+                    this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+                    params: {
+                        wd: "kla"
+                    },
+                    jsonp: 'cb'  //设置jsonp回调函数名为cb
+                }).then(function(res){
+                        console.log(res.data)
+                    },function(res){
+                        console.log(res.data)
+                    })
+                  }
+
+                }
+                
+            })
+        </script>
+</html>

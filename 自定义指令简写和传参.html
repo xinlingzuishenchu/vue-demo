@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+  
+</style>
+</head>
+<body>
+   <div id="box">
+        
+    <div v-red = "a">dsfhrthrt</div>
+
+    <!-- 第二种传参 -->
+    <div v-yellow = "'yellow'">dsfhrthrt</div>
+
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript">
+
+
+            Vue.directive('red',function(el,binding){
+                  el.style.backgroundColor = "red";
+                  //binding.value是参数
+                  alert(binding.value)
+            });
+
+            Vue.directive('yellow',function(el,binding){
+                  el.style.backgroundColor = binding.value;
+            });
+         
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {
+                  a: "blue"     
+                  }, 
+
+            }); 
+
+
+
+
+
+
+  </script>
+</html>

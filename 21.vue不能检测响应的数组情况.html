@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app">   
+
+      <li v-for="(item,index) in items" v-bind:key="index">
+        {{ index }}-{{ item.message }}
+      </li>
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          items:[
+              {message:'香蕉'},
+              {message:'苹果'},
+              {message:'橘子'}
+          ]
+
+        }
+       
+    } );  
+
+//1.当你利用索引直接设置一个项时
+vm.items[1] = 'x'; //不是响应性的，因为页面数据未改变
+//2.当你修改数组的长度时
+vm.$data.items.length = 2; //不是响应性的，因为页面数据未改变
+console.log(vm.$data.items)
+
+//避免不能响应的方法请查看22.解决vue不能检测的数组情况
+
+</script>
+</html>

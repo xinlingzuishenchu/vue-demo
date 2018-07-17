@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app">   
+
+    <div v-if="seen">哈哈啊哈</div>
+    <div v-else-if="bool">哎呦喂！</div>
+    <div v-else>123456</div>
+  </div>  
+    
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          seen:false,
+          bool:true
+        },
+       
+    } );  
+</script>
+</html>

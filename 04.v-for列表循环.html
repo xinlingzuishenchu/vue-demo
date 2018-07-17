@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div class="app">
+       <p v-for="todo in todos">
+         {{todo.text}}
+       </p>
+   </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el:'.app',
+        data:{
+          todos:[
+            {text:"这是第一行"},
+            {text:"这是第二行"},
+            {text:"这是第三行"}
+        ]
+        }
+            
+        
+    })
+    app.todos.push({text:"4444"})
+</script>
+</html>

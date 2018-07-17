@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+  .col {
+      background:red;
+  }
+  /*加上v-cloak这个属性就看不到未加载之前的{{msg}}了,一般用于大的段落*/
+  [v-cloak]{
+    display:none;
+  }
+</style>
+</head>
+<body>
+   <div class="container" id="box">
+        
+       {{a}}
+
+       <br/>
+  <!-- 这里会报错不显示 -->
+       {{msg}}
+
+
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript">
+
+          // 挂载第一种方式
+            var vm = new Vue({ 
+                  msg:24, 
+                  show:function(){
+                      alert(123)
+                  },          
+                  data: {
+                  a: 1,
+                  b: 12  
+                  }, 
+
+            }).$mount("#box"); 
+
+
+            //自定义属性msg
+            console.log(vm.$options)
+            console.log(vm.$options.msg)
+
+            //自定义函数show
+            console.log(vm.$options)
+            vm.$options.show();
+
+  </script>
+</html>

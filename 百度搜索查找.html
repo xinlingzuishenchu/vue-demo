@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+  .col {
+      background:red;
+  }
+</style>
+</head>
+<body>
+   <div class="container" id="box">
+   <div>
+     <input id="input" type="text" v-model="t1" @keyup="jsonp($event)" @keydown.down="changeDown" @keydown.up="changeUp">
+     <button type="button" @click="serch">搜索</button>
+   </div>
+      
+      <ul>
+        <li v-for="(val,index) in myData" :class="{col:index == now}">{{val}}</li>
+      </ul>
+     
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript">
+            var vm = new Vue({
+                el: '#box',
+                data: {
+                  t1:'',
+                  now:-1,
+                  myData:[]
+                },
+                methods:{
+                  jsonp:function(ev){
+                    //上下键不触发
+                    if(ev.keyCode == 38 || ev.keyCode == 40){
+                      return;
+                    }else if(ev.keyCode == 13){
+                      //按enter键时进行查找
+                      this.serch();
+                    }else{
+                      this.now = -1;
+                      //百度搜索下拉列表匹配数据接口
+                      this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+                        params: {
+                            wd: this.t1
+                        },
+                        jsonp: 'cb'  //设置jsonp回调函数名为cb
+                        }).then(function(res){
+                                this.myData= res.data.s;
+                                console.log(res.data.s)
+                            },function(res){
+                                console.log(res.data)
+                            })
+                    }
+                  },
+                  changeDown:function(){
+                      this.now++;
+                      this.t1 = this.myData[this.now];
+                      console.log(this.t1,this.myData[this.now])
+                      if(this.now == this.myData.length){
+                        this.now = -1;
+                      }
+                  },
+                  changeUp:function(){
+                    // 先判断是不是初始值-1然后再减值，不然刚开始按上键没反应
+                    if(this.now == -1){
+                        this.now = this.myData.length;
+                      }
+                      this.now--;
+                      this.t1 = this.myData[this.now];
+                      
+                  },
+                  serch:function(){
+                    alert('查找')
+                  }
+
+                }
+                
+            })
+        </script>
+</html>

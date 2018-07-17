@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="wrap"> 
+<div class="box">
+       <span v-bind:title="message">
+         {{message}}鼠标悬停几秒钟查看此处动态绑定的提示信息！
+       </span>
+       <span>
+         {{page}}
+       </span>
+   </div>
+
+   <div class="box">  
+        {{page}}
+   </div>
+
+
+</div>
+   
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el:'#wrap',
+        data:{
+            message: '页面加载于 ' + new Date().toLocaleString(),
+            page:"哎呦喂"
+        }
+    })
+</script>
+</html>

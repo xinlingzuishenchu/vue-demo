@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+  .col {
+      background:red;
+  }
+</style>
+</head>
+<body>
+
+       <input id='passwd' type="text" name="password">
+
+       <button class="btn">点击</button>
+
+
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/MD5.js"></script>
+<script type="text/javascript">
+$(function(){
+
+
+            var password = $("#passwd").val();
+
+            $("#passwd").on("input",function(){
+                
+              console.log(password,123);
+
+            })
+
+            
+})
+
+
+  </script>
+</html>

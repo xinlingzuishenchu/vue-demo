@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app"> 
+
+      <ul>
+        <template v-for="item in items">
+          <li>{{ item.msg }}</li>
+          <li class="divider">123</li>
+        </template>
+      </ul>
+      
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          items:[
+            {msg:'香蕉'},
+            {msg:'苹果'},
+            {msg:'橘子'},
+            {msg:'菠萝'}
+          ]
+        }
+       
+    } );  
+
+
+</script>
+</html>

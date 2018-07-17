@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div id="app">
+        <p>{{message}}</p>
+        <button v-on:click="btn">消息翻转</button>
+   </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message: '页面加载于现在' 
+        },
+        methods:{
+          btn:function(){
+            this.message = this.message.split('').reverse().join('')
+          }
+        }
+    })
+</script>
+</html>

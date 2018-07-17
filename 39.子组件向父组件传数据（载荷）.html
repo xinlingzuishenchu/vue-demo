@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+      <div id="wrap">
+          <p v-for="item in items">{{item}}</p>
+          <button-btn v-on:do="btn"></button-btn>
+
+      </div>  
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+
+Vue.component("button-btn",{
+  template:"<div><input type='text' v-model='str' /><button v-on:click='handleSendMessage'>Send</button></div>",
+  data:function(){
+      return {
+        str:'哎呦喂！哈哈哈！'
+      }
+  },
+  methods:{
+    handleSendMessage:function(){
+      this.$emit('do',{str:this.str});//  {str:this.str}就是下面的函数参数data
+    }
+  }
+});
+
+var vm = new Vue({
+    el:'#wrap',
+    data:{
+      items:[]
+    },
+    methods:{
+      btn:function(data){
+        console.log(data)
+        this.items.push(data.str);
+      }
+    }
+})
+
+
+    
+</script>
+</html>

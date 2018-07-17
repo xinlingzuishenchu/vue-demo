@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+      	<div id="app">
+            <!-- 组件使用者只需传递users数据即可 -->
+            <my-stripe-list :items="users" odd-bgcolor="#D3DCE6" even-bgcolor="#E5E9F2">
+                <!-- props对象接收来自子组件slot的$index参数 -->
+                <template slot="cont" scope="str">  <!-- str就是props对象 -->
+                    <span>{{users[str.$index].id}}</span>
+                    <span>{{users[str.$index].name}}</span>
+                    <span>{{users[str.$index].age}}</span>
+                    <!-- 这里可以自定[编辑][删除]按钮的链接和样式 -->
+                    <a :href="'#edit/id/'+users[str.$index].id">编辑</a>
+                    <a :href="'#del/id/'+users[str.$index].id">删除</a>
+                </template>
+            </my-stripe-list>
+        </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+Vue.component('my-stripe-list', {
+  props: {
+            items: Array,
+            oddBgcolor: String,
+            evenBgcolor: String
+        },
+  /*slot的$index可以传递到父组件中*/
+  template: ` <div>
+                <div v-for="(item, index) in items" style="line-height:2.2;" :style="index % 2 === 0 ? 'background:'+oddBgcolor : 'background:'+evenBgcolor">
+                    <slot name="cont" :$index="index"></slot>
+                </div>
+              </div>`
+                
+            });
+        var vm = new Vue({
+                el: '#app',
+                data: {
+                    users: [
+                        {id: 1, name: '张三', age: 20},
+                        {id: 2, name: '李四', age: 22},
+                        {id: 3, name: '王五', age: 27},
+                        {id: 4, name: '张龙', age: 27},
+                        {id: 5, name: '赵虎', age: 27}
+                    ]
+                }
+            });
+    
+</script>
+</html>

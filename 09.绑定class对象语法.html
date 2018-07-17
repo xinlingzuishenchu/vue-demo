@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .active {
+          background: white;
+        }
+    </style>
+</head>
+<body>
+        
+   <div id="app">  <!-- 
+    <div class="static"
+     v-bind:class="{ active: isActive, 'text-danger': hasError }">
+</div>  -->
+
+<div v-bind:class="classObject"></div>
+  </div>  
+    
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {  
+        
+
+            // isActives: true,
+            // error: {
+            //     type:'fatal'
+            // },
+
+
+
+
+            isActives: true,
+            error: null
+        },  
+        computed:{
+            classObject:function(){
+                return {
+                    active:this.isActives && !this.error,
+                    'text-danger':this.error && this.error.type === 'fatal'
+                }
+            }
+        } 
+    } );  
+</script>
+</html>

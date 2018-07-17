@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app"> 
+
+      <ul v-if="todos.length">
+        <li v-for="todo in todos" >
+        {{ todo }}
+        </li>
+      </ul>
+      <p v-else>No todos left!</p>
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          todos:{
+            name:'哈哈',
+            age:26,
+            height:'200cm',
+            // length:18
+          }
+        }
+       
+    } );  
+
+// 如果你的目的是有条件地跳过循环的执行，那么可以将 v-if 置于外层元素 (或 <template>标签)上。和上面例子一样
+
+</script>
+</html>

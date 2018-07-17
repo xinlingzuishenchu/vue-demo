@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .active {
+          background: white;
+        }
+    </style>
+</head>
+<body>
+        
+   <div id="app">   
+    <!-- <div v-bind:class="[activeClass, errorClass]"></div> -->
+    <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+  </div>  
+    
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          isActive: '',
+          activeClass:'active',
+          errorClass: 'text-danger'
+        },
+       
+    } );  
+</script>
+</html>

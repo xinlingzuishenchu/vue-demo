@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div id="app">
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+   </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    //组件里面的data必须是函数，函数必须返回对象
+    Vue.component('simple-counter', {
+      template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+      data: function () {
+        return { counter: 0 }  //这里的{}对象相当于下面的data:{}
+      }
+    })
+
+    var vm = new Vue({
+        el:'#app',
+        data:{ 
+        }
+        
+    })
+
+    
+</script>
+</html>

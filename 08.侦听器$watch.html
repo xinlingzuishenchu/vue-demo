@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .active {
+          background: white;
+        }
+    </style>
+</head>
+<body>
+        
+   <div id="app">  
+    <input type="text" v-model:value="childrens.name" />  
+    <input type="text" v-model:value="lastName" />  
+  </div>  
+    
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {  
+            childrens: {  
+                name: '小强',  
+                age: 20,  
+                sex: '男'  
+            },  
+            tdArray:["1","2"],  
+            lastName:"张三"  
+        },  
+        watch:{  
+            childrens:{  
+                handler:function(val,oldval){  
+                    console.log(val,9999)  
+                },
+                deep:true  //对象内部的属性监听，也叫深度监听只有deep为true时才执行handler
+            },  
+            'childrens.name':function(val,oldval){  
+                console.log(val+"aaa")  
+            },//键路径必须加上引号  
+            lastName:function(val,oldval){  
+                console.log(this.lastName)  
+            }  
+        },//以V-model绑定数据时使用的数据变化监测  
+    } );  
+    vm.$watch("lastName",function(val,oldval){  
+        console.log(val)  
+    })//主动调用$watch方法来进行数据监测</span> 
+
+    // 深度监听对象的数据变化和上面的watch一样
+    vm.$watch("childrens",function(val,oldval){  
+        console.log(val,1111)  
+    },{deep:true})
+</script>
+</html>

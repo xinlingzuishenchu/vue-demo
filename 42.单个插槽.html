@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+      	<div id="app">
+		    <h1>我是父组件的标题</h1>
+		    <child>
+		        <!-- <p>我不是slot，而是插值</p> --> <!-- 要分发的内容 -->
+		    </child>
+		</div>  
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+Vue.component('child',{
+        template:'<div><h2>我是子组件的标题</h2><slot><div>只有在没有要分发的内容时才会显示。</div></slot></div>'
+    });
+    new Vue({
+        el:'#app'
+    })
+
+    // 除非子组件模板包含至少一个 <slot> 插口，否则父组件的内容将会被丢弃。当子组件模板只有一个没有属性的插槽时，父组件传入的整个内容片段将插入到插槽所在的 DOM 位置，并替换掉插槽标签本身。
+    
+</script>
+</html>

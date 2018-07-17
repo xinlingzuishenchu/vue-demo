@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+  .col {
+      background:red;
+  }
+</style>
+</head>
+<body>
+   <div class="container" id="box">
+        
+       <span v-red>{{msg}}</span>
+
+
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript">
+
+            Vue.directive('red',{
+              // inserted钩子函数, 当被绑定的元素插入到 DOM 中时……
+              inserted: function (el) {
+                el.style.background = 'red';
+              }
+            });
+            var vm = new Vue({ 
+                  el:"#box",        
+                  data: {
+                  msg:"welcom"
+                  }, 
+
+            }); 
+
+            
+
+            
+
+  </script>
+</html>

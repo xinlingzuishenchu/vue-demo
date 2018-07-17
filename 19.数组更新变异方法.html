@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app">   
+
+      <li v-for="(item,index) in items" v-bind:key="index">
+        {{ index }}-{{ item.message }}
+      </li>
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          items:[
+              {message:'香蕉'},
+              {message:'苹果'},
+              {message:'橘子'}
+          ]
+
+        }
+       
+    } );  
+
+vm.$data.items.push({message:'菠萝'})
+
+console.log(vm.$data.items) // 也可以写成vm.items，省去$data
+// 变异方法 (mutation method)，顾名思义，会改变被这些方法调用的原始数组
+// push()
+// pop()
+// shift()
+// unshift()
+// splice()
+// sort()
+// reverse()
+
+</script>
+</html>

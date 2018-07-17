@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .active {
+          background: white;
+        }
+    </style>
+</head>
+<body>
+        
+    <div id="box">
+    <div v-bind:id="dynamicId" ></div>
+        <span>{{foo}}</span>
+        <button v-on:click="btn">点击改变</button>
+        <div>{{now}}</div>
+    </div>
+    
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var str = '我是谁';
+    var obj = {
+      foo:'bar',
+      dynamicId:'wrap',
+      isButtonDisabled:'',
+      ok:'1232',
+      id:'list1'
+    };
+
+     new Vue({
+      el:'#box',
+      data:obj,
+      methods:{
+        btn:function(){
+          this.foo = 'abc';
+          console.log(this.now)
+        }
+      },
+      computed:{
+        now: function () {
+          return Date.now();
+        }
+      }
+    })
+
+
+
+</script>
+</html>

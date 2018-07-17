@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div id="app">
+          <input v-model="parentMsg">
+          <br/>
+          <span-child v-bind:message="parentMsg"></span-child>  
+          
+   </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+
+    Vue.component('span-child', {
+      // 声明 props
+      props: ['message'], //绑定的属性
+
+      // Prop 作为初始值传入后，子组件想把它当作局部数据来用；
+      // 定义一个局部变量，并用 prop 的值初始化它：
+      data:function(){
+        return {count:this.message}
+      },
+      // Prop 作为原始数据传入，由子组件处理成其它数据输出。
+      // 定义一个计算属性，处理 prop 的值并返回：
+      computed:{
+         normalizedSize:  function () {
+             return this.message
+         }
+      },
+      methods:{
+          btn:function(){
+            console.log(this.message)
+          }
+        },
+      //计算属性
+      template: '<div>\
+      <span>{{ message }}</span><br/>\
+      <span>{{ normalizedSize }}</span><br/>\
+      <span>{{ count }}(我不会改变)</span><br/>\
+      <button v-on:click="btn">点击打印this.message看计算属性是否改变原来值</button>\
+      </div>'  
+      
+    })
+
+    var vm = new Vue({
+        el:'#app',
+        data:{ 
+          parentMsg:'哎呦，不错哟！'
+        }
+        
+        
+    })
+
+    
+</script>
+</html>

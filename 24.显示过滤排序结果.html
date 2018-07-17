@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        
+   <div id="app">   
+
+      <li v-for="n in evenNumbers">{{ n }}</li>
+  </div>  
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          numbers:[1,2,3,4,5]
+        },
+        computed: {  //计算属性
+          evenNumbers: function () {
+            return this.numbers.filter(function (number) {
+              return number % 2 === 0
+            })
+          }
+        }
+       
+    } );  
+
+console.log(vm.numbers)  //不改变原始数组
+console.log(vm.evenNumbers)
+
+
+// 在计算属性不适用的情况下 (例如，在嵌套 v-for 循环中) 你可以使用一个 method 方法：
+
+// <li v-for="n in even(numbers)">{{ n }}</li>
+
+
+
+
+// data: {
+//   numbers: [ 1, 2, 3, 4, 5 ]
+// },
+// methods: {
+//   even: function (numbers) {
+//     return numbers.filter(function (number) {
+//       return number % 2 === 0
+//     })
+//   }
+// }
+
+
+
+</script>
+</html>

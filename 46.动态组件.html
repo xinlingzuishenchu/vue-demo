@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>demo</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+	</head>
+	<body>
+		
+			<div id="app">
+			  <button @click="change">切换页面</button>
+			  <component :is="currentView"></component>
+			</div>
+		
+	</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+
+	var home = {template:'<div>我是主页</div>'};
+	var post = {template:'<div>我是提交页</div>'};
+	var archive = {template:'<div>我是存档页</div>'};
+
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			index:0,
+			arr:['home','post','archive']
+		},
+		  computed:{
+		    currentView(){
+		        return this.arr[this.index];
+		    }
+		  },
+		   methods:{
+		    change(){
+		      this.index = (++this.index)%3;
+		    }
+		  },
+		   components: {
+		    home,
+		    post,
+		    archive,
+		  }
+
+	})
+</script>
+

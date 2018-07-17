@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+      <div id="wrap">
+
+          <my-component v-on:click.native="doTheThing"></my-component>
+
+      </div>  
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+
+Vue.component("my-component",{
+  template:"<div>123</div>",
+  data:function(){
+      return {
+        str:0
+      }
+  }
+});
+
+var vm = new Vue({
+    el:'#wrap',
+    data:{
+      items:[]
+    },
+    methods:{
+      doTheThing:function(data){
+        console.log(data)
+      }
+    }
+})
+
+
+    
+</script>
+</html>

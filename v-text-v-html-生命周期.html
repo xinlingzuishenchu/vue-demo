@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style type="text/css">
+  .col {
+      background:red;
+  }
+  /*加上v-cloak这个属性就看不到未加载之前的{{msg}}了,一般用于大的段落*/
+  [v-cloak]{
+    display:none;
+  }
+</style>
+</head>
+<body>
+   <div class="container" id="box">
+   <div v-cloak>
+     {{msg}}
+   </div>
+
+<!-- v-text看不见加载之前的{{}} -->
+  <span v-text='msg'></span>  
+  <span>{{msg}}</span>
+     
+
+  <p v-html="code"></p>
+
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript">
+            var vm = new Vue({          
+                  el: "#box",          
+                  data: {
+                  msg: "Vue.js" ,
+                  text:"的发挥",
+                  code:"<span>分割开来胡椒粉</span>"       
+                  },         
+                  beforeCreate: function() { 
+                    console.log("创建前")            
+                    console.log(this.a)            
+                    console.log(this.$el)          
+                  },         
+                  created: function() {
+                    console.log("创建之后");            
+                    console.log(this.a)            
+                    console.log(this.$el)          
+                  },         
+                  beforeMount: function() {            
+                    console.log("mount之前")            
+                    console.log(this.a)            
+                    console.log(this.$el)          
+                  },          
+                  mounted: function() {            
+                    console.log("mount之后")            
+                    console.log(this.a)            
+                    console.log(this.$el)          
+                  },          
+                  beforeUpdate: function() {            
+                    console.log("更新前");            
+                    console.log(this.a)            
+                    console.log(this.$el)          
+                  },          
+                  updated: function() {            
+                    console.log("更新完成");            
+                    console.log(this.a);            
+                    console.log(this.$el)          
+                  },          
+                  beforeDestroy: function() {            
+                    console.log("销毁前");            
+                    console.log(this.a)            
+                    console.log(this.$el)           
+                  },          
+                  destroyed: function() {           
+                    console.log("已销毁");          
+                    console.log(this.a)          
+                    console.log(this.$el)          
+                  }   
+
+            });  
+  </script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div class="app">
+       <p v-if="seen">
+         你可以看到我了！
+       </p>
+       <p class="box" v-else>
+         我是错误的！
+       </p>
+   </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el:'.app',
+        data:{
+            seen:false
+        }
+    })
+</script>
+</html>

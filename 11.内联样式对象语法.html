@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .active {
+          background: white;
+        }
+    </style>
+</head>
+<body>
+        
+   <div id="app">   
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">aaaa</div>
+
+    <div v-bind:style="{ color: 'green', fontSize: '20px' }">aaaa</div>
+
+    <div v-bind:style="styleObject">bbbb</div>
+  </div>  
+    
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+var vm = new Vue( {  
+        el: '#app',  
+        data: {
+          activeColor: 'red',
+          fontSize: 30,
+          styleObject: {
+            color: 'red',
+            fontSize: '13px'
+          }
+        },
+       
+    } );  
+</script>
+</html>

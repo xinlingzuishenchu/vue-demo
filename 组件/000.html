@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+<style type="text/css">
+  .div1{
+    width:100px;
+    height:100px;
+    background:red;
+  }
+ .fade-enter-active, .fade-leave-active {
+  transition: width .5s;
+  background:blue;
+}
+ .fade-enter-to,.fade-leave{
+  
+  background:green;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  width: 20px;
+}
+</style>
+</head>
+<body>
+   <div id="box">
+        
+      <aaa></aaa>
+    
+    
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="../js/vue-resource.js"></script>
+<script type="text/javascript">
+
+            Vue.component('aaa',{
+              template:'<h3 @click="change">{{msg}}</h3>',
+              data:function(){
+                return {msg:"我是标题"}
+              },
+              methods:{
+                change(){
+                  alert(123)
+                }
+              }
+            });
+          
+
+
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {
+                  onOff: true     
+                  }, 
+                  methods:{
+                    toggle:function(){
+                      this.onOff = !this.onOff;
+                     
+                    }
+                  }
+
+            }); 
+
+
+
+
+
+
+  </script>
+</html>
