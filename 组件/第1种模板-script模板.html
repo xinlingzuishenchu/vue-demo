@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+   <div id="box">
+        
+      <my-aa></my-aa>
+    
+    
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="../js/vue-resource.js"></script>
+
+
+<!-- 下面script包裹的是一个模板,要被最外面的一个标签包裹,script这种方式不建议使用 -->
+<!-- type里面随便放 -->
+<script type="X-template" id="aaa">
+  <div>
+      <h3 @click="change">这是一个{{msg}}</h3>
+      <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+      </ul>
+  </div>
+  
+</script>
+
+
+
+<script type="text/javascript">
+
+        
+
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {
+                  onOff: true     
+                  }, 
+                  components:{
+                    'my-aa':{
+                      template:'#aaa',
+                      data(){
+                      return {msg:"大标题"}
+                    },
+                    methods:{
+                      change(){
+                        alert(123)
+                      }
+                    }
+                    }
+                    
+                  }
+
+            }); 
+
+
+
+
+
+
+  </script>
+</html>

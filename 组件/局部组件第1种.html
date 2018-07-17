@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,13 +20,17 @@
 <script type="text/javascript" src="../js/vue-resource.js"></script>
 <script type="text/javascript">
 
-          //创建全局组件
-            var Aaa = Vue.extend({
-              template:'<h3>我是标题</h3>'
+            Vue.component('aaa',{
+              template:'<h3 @click="change">{{msg}}</h3>',
+              data:function(){
+                return {msg:"我是标题"}
+              },
+              methods:{
+                change(){
+                  alert(123)
+                }
+              }
             });
-
-          //引用全局组件
-            Vue.component('aaa',Aaa);
           
 
 

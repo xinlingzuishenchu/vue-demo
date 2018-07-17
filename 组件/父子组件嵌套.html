@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="box">
+      <my-aa></my-aa> 
+    </div>
+
+
+  
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/vue-resource.js"></script>
+
+<script type="text/javascript">
+
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {     
+                  }, 
+                  components:{
+                    'my-aa':{
+                      data(){
+                        return {msg:"我是父级的数据！"}
+                      },
+                      template:'<h2>我是父组件->{{msg}}<my-bb></my-bb></h2>',//template里面只能被最外层的标签包裹，<h2>我是父组件</h2><my-bb></my-bb>,这样就不行了！
+                      components:{
+                        'my-bb':{
+                          template:'<h3>我是子组件</h3>'
+                        }
+                      }
+                    },
+                    
+                  }
+
+            }); 
+
+
+
+
+
+
+  </script>
+</html>

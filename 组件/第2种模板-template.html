@@ -6,40 +6,44 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-   <div id="box">
-        
-      <aaa></aaa>
-    
-    
-   </div>
+    <div id="box">
+      <my-aa></my-aa>
+    </div>
 
 
+    <!-- my-aa的模板，推荐使用-->
+    <template id="aaa">
+      <h3 @click="change">这是一个{{msg}}</h3>
+    </template>
+    
+  
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script type="text/javascript" src="../js/vue-resource.js"></script>
+
 <script type="text/javascript">
 
-          //创建全局组件
-            var Aaa = Vue.extend({
-              template:'<h3>我是标题</h3>'
-            });
-
-          //引用全局组件
-            Vue.component('aaa',Aaa);
-          
-
+        
 
             var vm = new Vue({ 
                   el:"#box",           
                   data: {
                   onOff: true     
                   }, 
-                  methods:{
-                    toggle:function(){
-                      this.onOff = !this.onOff;
-                     
+                  components:{
+                    'my-aa':{
+                      template:'#aaa',
+                      data(){
+                      return {msg:"大标题"}
+                    },
+                    methods:{
+                      change(){
+                        alert(123)
+                      }
                     }
+                    }
+                    
                   }
 
             }); 
