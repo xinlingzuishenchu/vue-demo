@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="box">
+      <my-aa>
+        <ul slot="ul">
+          <li>1111</li>
+          <li>2222</li>
+          <li>3333</li>
+        </ul>
+        <ol slot="ol">
+          <li>4444</li>
+          <li>5555</li>
+          <li>6666</li>
+        </ol>
+      </my-aa> 
+
+      <hr/>
+
+      <my-aa></my-aa>
+    </div>
+
+    <template id="aaa">
+      <div>
+        <h1>哈哈哈哈哈</h1>
+        <!-- 如果组件内部有对应的属性"slot=ul",就显示"slot=ul"的代码块,否则就显示"name=ul"里面默认的部分 -->
+        <slot name="ul">我是默认的11</slot> 
+        <slot name="ol">我是默认的22</slot>
+        <p>welcome vue!</p>
+      </div>
+    </template>
+  
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/vue-resource.js"></script>
+
+<script type="text/javascript">
+
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {     
+                  }, 
+                  components:{
+                    'my-aa':{
+                      template:'#aaa',
+                    
+                    },
+                    
+                  }
+
+            }); 
+
+
+            //slot插槽，占位置的
+            // 除非子组件模板包含至少一个 <slot> 插口，否则父组件的内容将会被丢弃。当子组件模板只有一个没有属性的插槽时，父组件传入的整个内容片段将插入到插槽所在的 DOM 位置，并替换掉插槽标签本身。
+
+
+  </script>
+</html>

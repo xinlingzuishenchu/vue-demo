@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="box">
+        <!-- 以下网址为vue-router教程 -->
+        <a href="https://router.vuejs.org/zh/guide/#html">https://router.vuejs.org/zh/guide/#html</a>
+
+        <br/>
+        <!-- 跳转标签  '?a=123'是为了下面$route.query的显示而添加的 -->
+        <router-link to="/user/home?a=123">主页</router-link>
+        <router-link to="/user/news">新闻</router-link>
+        
+        <!-- 跳转显示的内容都在'router-view'标签里 -->
+        <div>
+          <router-view></router-view>
+        </div>
+
+    </div>
+
+
+
+  
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/vue-router.js"></script>
+
+<script type="text/javascript">
+          
+          //创建组件
+          const User = {template:'<div>当前路径：{{ $route.path }}<br/>动态路由值：{{ $route.params.id }}<br/>传入的参数： {{ $route.query }}</div>'};
+
+          //创建 router 实例，然后传 `routes` 配置
+          const router = new VueRouter({
+            routes: [
+              // 动态路径参数:id 以冒号开头
+              { path: '/user/:id', component: User }
+            ]
+          });
+
+          // 创建和挂载根实例。
+          // 记得要通过 router 配置参数注入路由，
+          // 从而让整个应用都有路由功能
+          const app = new Vue({
+            router
+          }).$mount('#box');
+  </script>
+</html>

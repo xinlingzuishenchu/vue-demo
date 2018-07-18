@@ -7,9 +7,21 @@
 </head>
 <body>
     <div id="box">
-      <my-aa></my-aa> 
+      <my-aa>
+        <ul>
+          <li>1111</li>
+          <li>2222</li>
+          <li>3333</li>
+        </ul>
+      </my-aa> 
     </div>
 
+    <template id="aaa">
+      <div>
+        <h1>哈哈哈哈哈</h1>
+        <slot>我是默认的</slot>
+      </div>
+    </template>
   
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -24,7 +36,7 @@
                   }, 
                   components:{
                     'my-aa':{
-                      template:'<h1>哈哈哈哈哈</h1>',
+                      template:'#aaa',
                     
                     },
                     
@@ -33,16 +45,8 @@
             }); 
 
 
-            //子级把数据发送到父级
-            // this.$emit("事件名","发送数据");
-            //譬如: this.$emit("shild-msg",this.m);
-
-            //父级通过"@事件名"来接受数据,事件要绑定到发送数据的组件身上
-            //譬如: <my-bb @child-msg="get"></my-bb>
-            //通过在父级设定get函数来接收数据
-            // get(data){
-                  // alert(data)   data是接收的数据
-            // }
+            //slot插槽，占位置的
+            // 除非子组件模板包含至少一个 <slot> 插口，否则父组件的内容将会被丢弃。当子组件模板只有一个没有属性的插槽时，父组件传入的整个内容片段将插入到插槽所在的 DOM 位置，并替换掉插槽标签本身。
 
 
   </script>

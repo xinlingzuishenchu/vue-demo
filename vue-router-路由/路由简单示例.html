@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="box">
+        <!-- 以下网址为vue-router教程 -->
+        <a href="https://router.vuejs.org/zh/guide/#html">https://router.vuejs.org/zh/guide/#html</a>
+
+        <br/>
+        <!-- 跳转标签 -->
+        <router-link to="/home">主页</router-link>
+        <router-link to="/news">新闻</router-link>
+        
+        <!-- 跳转显示的内容都在'router-view'标签里 -->
+        <div>
+          <router-view></router-view>
+        </div>
+
+    </div>
+
+
+  
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/vue-router.js"></script>
+
+<script type="text/javascript">
+          // 1. 定义 (路由) 组件。
+          const Home = {template:'<div>我是主页</div>'};
+          const News = {template:'<div>我是新闻</div>'};
+
+          // 2. 定义路由
+          // 每个路由应该映射一个组件。 其中"component" 可以是
+          // 通过 Vue.extend() 创建的组件构造器，
+          // 或者，只是一个组件配置对象。
+          const routes = [
+                {path:'/home',component:Home},
+                {path:'/news',component:News}
+          ];
+           
+          // 3. 创建 router 实例，然后传 `routes` 配置
+          // 你还可以传别的配置参数
+          const router = new VueRouter({
+            routes // (缩写) 相当于 routes: routes
+          });
+
+          // 4. 创建和挂载根实例。
+          // 记得要通过 router 配置参数注入路由，
+          // 从而让整个应用都有路由功能
+          const app = new Vue({
+            router
+          }).$mount('#box');
+  </script>
+</html>
