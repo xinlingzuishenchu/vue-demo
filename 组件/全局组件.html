@@ -20,12 +20,17 @@
 <script type="text/javascript" src="../js/vue-resource.js"></script>
 <script type="text/javascript">
 
-          //创建全局组件
+          //extend不建议使用
+          //创建组件
             var Aaa = Vue.extend({
               template:'<h3>我是标题</h3>'
             });
 
-          //引用全局组件
+            // 定义组件
+            // var home = {template:'<div>我是主页</div>'};
+            // var home = {template:'#aaa'};
+
+          //引用组件
             Vue.component('aaa',Aaa);
           
 

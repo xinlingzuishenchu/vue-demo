@@ -9,11 +9,16 @@
 </style>
 </head>
 <body>
-   <div id="box">
-        
-    <input type="text" id="box" @keydown.ctrl ="show">
-
-   </div>
+<div id="box">
+  
+  <ul>
+    <li v-for="(val,key,index) in arr">{{index}} -- {{key}} -- {{val}}</li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  
+</div>
 
 
 </body>
@@ -22,22 +27,22 @@
 <script type="text/javascript" src="js/vue-resource.js"></script>
 <script type="text/javascript">
 
-          
-            var vm = new Vue({ 
-                  el:"#box",           
-                  data: {
-                  a: "blue"     
-                  }, 
-                  methods:{
-                    show:function(){
-                      alert(123)
-                    }
-                  }
-
-            }); 
-
-
-
+          var vm = new Vue({
+            el:"#box",
+            data:{
+              onOff:true,
+              arr:{
+                a:111,
+                b:222,
+                c:333
+              }
+            },
+            methods:{
+              change(){
+                this.onOff = !this.onOff;
+              }
+            }
+          })
 
 
 

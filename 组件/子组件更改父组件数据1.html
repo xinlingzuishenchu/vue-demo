@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="box">
+      <my-aa></my-aa> 
+      
+    </div>
+
+    <template id="aaa">
+      <div>
+        <h3>我是父级</h3>
+        <my-bb :m="msg"></my-bb>
+
+      </div>
+    </template>
+  
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/vue-resource.js"></script>
+
+<script type="text/javascript">
+
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {     
+
+                  }, 
+                  components:{
+                    'my-aa':{
+                      data(){
+                        return {
+                          msg:{
+                            a:'我是父组件'
+                          }
+                        }
+                      },
+                      template:'#aaa',
+                      components:{
+                        'my-bb':{
+                          // 第一种传数据
+                          //props:["m","myNum"],//这里注意要用驼峰命名
+
+                          // 第二种传数据,这种可以校验数据类型
+                          props:{
+                              m:Object
+                          },
+                          template:'<h3>获取到父组件数据->{{m.a}}<input type="button" value="按钮" @click="change"></h3>',
+                          methods:{
+                            change(){
+                              this.m.a = "我被更改了"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    
+                  }
+
+            }); 
+
+
+
+
+
+
+  </script>
+</html>
