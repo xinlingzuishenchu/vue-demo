@@ -11,18 +11,27 @@
     background:red;
   }
  .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: 1s all ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter{
   opacity: 0;
+  width:100px;
+  height:100px;
+}
+.fade-enter-active{
+  opacity: 1;
+  width:100px;
+  height:100px;
 }
 </style>
 </head>
 <body>
    <div id="box">
         
-    <input type="button" value="按钮" @click="toggle">
-    <transition name="fade"><div id="div1" v-show="onOff"></div></transition>
+    <input type="button" value="按钮" @click="show=!show">
+      <transition name="fade">
+        <div id="div1" v-show="show"></div>
+      </transition>
     
    </div>
 
@@ -37,12 +46,9 @@
             var vm = new Vue({ 
                   el:"#box",           
                   data: {
-                  onOff: true     
+                  show: false     
                   }, 
                   methods:{
-                    toggle:function(){
-                      this.onOff = !this.onOff;
-                    }
                   }
 
             }); 

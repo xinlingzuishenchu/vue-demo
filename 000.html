@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+  .div{
+    width:100px;
+    height:100px;
+    background:red;
+  }
+</style>
+</head>
+<body>
+<div id="box">
+  
+ <input type="button" value="按钮" @click="onOff =!onOff">
+
+  <transition>
+    <div class="div" v-show="onOff"></div>
+  </transition>
+
+    
+</div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript">
+
+          var vm = new Vue({
+            el:"#box",
+            data:{
+              onOff:false
+            },
+            methods:{
+            }
+          })
+
+
+
+  </script>
+</html>
