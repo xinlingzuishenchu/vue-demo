@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+<style type="text/css">
+
+  .div1{
+    width:300px;
+    height:300px;
+    background:red;
+  }
+  /*当元素显示出来，从enter -> enter-active 状态的过渡*/
+ .fade-enter-active{
+  transition: all 1s ease;
+  opacity: 1;
+  background:green;
+  width:300px;
+  height:300px;
+}
+/*当元素消失离开，从 .div1 -> leave-active 状态的过渡*/
+ .fade-leave-active{
+  transition: all 1s ease;
+  opacity: 0;
+  background:yellow;
+  width:100px;
+  height:100px;
+}
+
+/*开始或结束的状态*/
+.fade-enter,.fade-leave{
+  opacity: 0;
+  width:100px;
+  height:100px;
+}
+
+
+</style>
+</head>
+<body>
+   <div id="box">
+        
+    <input type="button" value="按钮" @click="show=!show">
+      <transition name="fade"
+        v-on:before-enter="beforeEnter"
+        v-on:enter="enter"
+        v-on:after-enter="afterEnter"
+        v-on:enter-cancelled="enterCancelled"
+
+        v-on:before-leave="beforeLeave"
+        v-on:leave="leave"
+        v-on:after-leave="afterLeave"
+        v-on:leave-cancelled="leaveCancelled"
+      >
+        <div class="div1" v-show="show"></div>
+      </transition>
+    
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="../js/vue-resource.js"></script>
+<script type="text/javascript">
+
+          
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {
+                  show: false     
+                  }, 
+                  methods: {
+                  // --------
+                  // 进入中
+                  // --------
+
+                  beforeEnter: function (el) {
+                    console.log(el)
+                    console.log("动画enter(进入)之前")
+                  },
+                  // 此回调函数是可选项的设置
+                  // 与 CSS 结合时使用
+                  enter: function (el, done) {
+                    console.log("动画enter(进入)")
+                    // done()
+                  },
+                  afterEnter: function (el) {
+                    console.log("动画enter(进入)之后")
+                    el.style.background = "blue";
+                  },
+                  enterCancelled: function (el) {
+                    console.log("enter")
+                  },
+
+                  // --------
+                  // 离开时
+                  // --------
+
+                  beforeLeave: function (el) {
+                    console.log("动画离开之前")
+                  },
+                  // 此回调函数是可选项的设置
+                  // 与 CSS 结合时使用
+                  leave: function (el, done) {
+                    console.log("动画离开")
+                    // done()
+                  },
+                  afterLeave: function (el) {
+                    console.log("动画离开之后")
+                  },
+                  // leaveCancelled 只用于 v-show 中
+                  leaveCancelled: function (el) {
+                    console.log("leave")
+                  }
+                }
+
+            }); 
+
+/*当元素显示出来，从enter ----过渡缓慢的过程----> enter-active ----快速----> .div 状态的过渡*/
+/*当元素消失离开，从 .div1 ----快速----> leave-active ----过渡缓慢的过程----> leave状态的过渡*/
+
+
+
+  </script>
+</html>

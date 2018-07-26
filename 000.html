@@ -2,45 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vue</title>
-    <link rel="stylesheet" href="css/style.css">
-<style type="text/css">
-  .div{
-    width:100px;
-    height:100px;
-    background:red;
-  }
-</style>
+    <title>动画</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <style type="text/css">
+        p {
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        /* 定义动画 */
+        .fade-enter-active,.fade-leave-active {
+            /*transition: all 1s ease;*/
+            transition: 1s all ease;
+        }
+
+
+        /* 
+        * 定义过渡 
+        */
+    
+        /* .fade-enter,.fade-leave-active {
+            opacity: 0
+        } */
+
+        /* 
+        * 定义宽高动画 
+        */
+        .fade-enter-active{
+        opacity:1;
+        width:300px;
+        height:300px;
+    }
+    .fade-leave-active{
+        opacity:0;
+        width:100px;
+        height:100px;
+    }
+    /* 重要：定义初始状态 */
+    .fade-enter{
+        opacity:0;
+        width:100px;
+        height:100px;
+    }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            var app = new Vue({
+                el:'#box',
+                data:{
+                    show:false
+                }
+            })
+        }
+    </script>
 </head>
 <body>
-<div id="box">
-  
- <input type="button" value="按钮" @click="onOff =!onOff">
-
-  <transition>
-    <div class="div" v-show="onOff"></div>
-  </transition>
-
-    
-</div>
-
-
+    <div id="box">
+        <!-- 控制数据的值切换显示隐藏 -->
+        <button @click="show=!show">transition</button>
+        <transition name="fade">
+        <p v-show="show"></p>
+        </transition>
+    </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script type="text/javascript" src="js/vue-resource.js"></script>
-<script type="text/javascript">
-
-          var vm = new Vue({
-            el:"#box",
-            data:{
-              onOff:false
-            },
-            methods:{
-            }
-          })
-
-
-
-  </script>
 </html>

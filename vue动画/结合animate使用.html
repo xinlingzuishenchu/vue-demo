@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animate.css">
+<style type="text/css">
+
+  .div1{
+    width:100px;
+    height:100px;
+    background:red;
+    margin:0 auto;
+  }
+ 
+
+</style>
+</head>
+<body>
+   <div id="box">
+        
+    <input type="button" value="按钮" @click="show=!show">
+      <transition enter-active-class="bounceInLeft" leave-active-class="bounceOutRight">
+        <div class="div1 animated" v-show="show"></div>
+      </transition>
+
+
+      <!-- <transition enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutRight">
+        <div class="div1" v-show="show"></div>
+      </transition> -->
+    
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="../js/vue-resource.js"></script>
+<script type="text/javascript">
+
+          
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {
+                  show: false     
+                  }
+
+            }); 
+
+
+
+
+  </script>
+</html>

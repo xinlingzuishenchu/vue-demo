@@ -20,11 +20,10 @@
 <body>
    <div id="box">
         
-    <input type="text" v-model="show=show">
+    <input type="button" value="按钮" @click="show=!show">
       <transition-group enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
-        <div class="div1 animated" v-for="(val,index) in lists" v-show="show" :key="index">
-          {{val}}
-        </div>
+        <div class="div1 animated" v-show="show" :key="1"></div>
+        <div class="div1 animated" v-show="show" :key="2"></div>
       </transition-group>
     
    </div>
@@ -36,23 +35,11 @@
 <script type="text/javascript" src="../js/vue-resource.js"></script>
 <script type="text/javascript">
 
-            //在输入框里面输入字符，如果数组里面的选项包含这些字母就显示
+          
             var vm = new Vue({ 
                   el:"#box",           
                   data: {
-                  show: '',
-                  list:["apple","banner","coach","deat"]   
-                  },
-                  computed:{
-                    lists(){
-                      var arr = [];
-                      this.list.forEach(function(val){
-                        if(val.indexOf(this.show) != -1){
-                          arr.push(val);
-                        }
-                      }.bind(this))
-                      return arr;
-                    }
+                  show: false     
                   }
 
             }); 
