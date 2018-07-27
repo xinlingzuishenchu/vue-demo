@@ -13,7 +13,7 @@
         <br/>
         <!-- 跳转标签 -->
         <router-link to="/home">主页</router-link>
-        <router-link to="/news">新闻</router-link>
+        <router-link to="/user">用户</router-link>
         
         <!-- 跳转显示的内容都在'router-view'标签里 -->
         <div>
@@ -32,17 +32,46 @@
 <script type="text/javascript">
           // 1. 定义 (路由) 组件。
           const Home = {template:'<div>我是主页</div>'};
-          const News = {template:'<div>我是新闻</div>'};
+
+          const User = {
+            template:`
+                      <div>
+                          <h3>我是用户信息</h3>
+                          <ul>
+                              <li>
+                                <router-link to="/user/xiaoming/age/15">xiaoming</router-link>
+                              </li>
+                              <li>
+                                <router-link to="/user/xiaohong/age/25">xiaohong</router-link>
+                              </li>
+                              <li>
+                                <router-link to="/user/xiaogang/age/40">xiaogang</router-link>
+                              </li>
+                          </ul>
+                          <div>
+                              <router-view></router-view>
+                          </div>
+                      </div>
+                      `
+          };
+
+          const Username = {template:"<div>{{$route.params}}</div>"}
 
           // 2. 定义路由
           // 每个路由应该映射一个组件。 其中"component" 可以是
           // 通过 Vue.extend() 创建的组件构造器，
           // 或者，只是一个组件配置对象。
           const routes = [
-                // {path:'/',component:Home},//默认首页第1种
-                {path:'*',redirect:"/home"},//默认首页第2种
+                // {path:'/',component:Home},//默认首页第1种,找不到路径显示空白不报错
+                {path:'*',redirect:"/home"},//默认首页第2种,找不到路径返回到首页
                 {path:'/home',component:Home},
-                {path:'/news',component:News}
+                {
+                  path:'/user',
+                  component:User,
+                  children:[
+                        {path:':username/age/:age',component:Username}
+                  ]
+                }
           ];
            
           // 3. 创建 router 实例，然后传 `routes` 配置
