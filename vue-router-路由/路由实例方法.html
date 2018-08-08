@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Vue</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/animate.css">
 </head>
 <body>
     <div id="box">
@@ -20,9 +19,7 @@
         
         <!-- 跳转显示的内容都在'router-view'标签里 -->
         <div>
-          <transition enter-active-class="bounceInLeft" leave-active-class="bounceOutRight">
-            <router-view class="animated"></router-view>
-          </transition>
+          <router-view></router-view>
         </div>
 
     </div>

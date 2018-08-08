@@ -15,6 +15,7 @@
    <div id="app">  
     <input type="text" v-model:value="childrens.name" />  
     <input type="text" v-model:value="lastName" />  
+    <input type="text" v-model:value="str" /> 
   </div>  
     
 
@@ -30,12 +31,14 @@ var vm = new Vue( {
                 sex: '男'  
             },  
             tdArray:["1","2"],  
-            lastName:"张三"  
+            lastName:"张三",
+            str:"哈哈" 
         },  
         watch:{  
             childrens:{  
+                //注意：当观察的数据为对象或数组时，Val和oldVal是相等的，因为这两个形参指向的是同一个数据对象
                 handler:function(val,oldval){  
-                    console.log(val,9999)  
+                    console.log(val,oldval,9999)  //
                 },
                 deep:true  //对象内部的属性监听，也叫深度监听只有deep为true时才执行handler
             },  
@@ -44,8 +47,14 @@ var vm = new Vue( {
             },//键路径必须加上引号  
             lastName:function(val,oldval){  
                 console.log(this.lastName,111,val)  
-            }  
+            },
+            str:'btn'  //值可以为methods的方法名
         },//以V-model绑定数据时使用的数据变化监测  
+        methods:{
+            btn(val,oldval){
+                console.log(val,oldval,8888888)
+            }
+        }
     } );  
     vm.$watch("lastName",function(val,oldval){  
         console.log(val)  
