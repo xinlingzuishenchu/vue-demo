@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="../css/style.css">
+<style type="text/css">
+  #div1{
+    width:100px;
+    height:100px;
+    background:red;
+  }
+ .fade-enter-active{
+  transition: 1s all ease;
+  opacity: 1;
+  width:300px;
+  height:300px;
+}
+ .fade-leave-active{
+  transition: 1s all ease;
+  opacity: 0;
+  width:300px;
+  height:300px;
+}
+.fade-enter{
+  opacity: 0;
+  width:100px;
+  height:100px;
+}
+
+</style>
+</head>
+<body>
+   <div id="box">
+        
+    <input type="button" value="按钮" @click="show=!show">
+      <transition name="fade">
+        <div id="div1" v-show="show"></div>
+      </transition>
+    
+   </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript" src="../js/vue-resource.js"></script>
+<script type="text/javascript">
+
+          
+            var vm = new Vue({ 
+                  el:"#box",           
+                  data: {
+                  show: false     
+                  }, 
+                  methods:{
+                  }
+
+            }); 
+
+
+
+
+
+
+  </script>
+</html>
