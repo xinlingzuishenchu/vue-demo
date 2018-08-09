@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Vue</title>
     <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+      .active{
+        color: #42b983;
+      }
+    </style>
 </head>
 <body>
         
@@ -13,6 +18,17 @@
           {{ item.message }}
         </li>
       </ul>
+      <br/>
+      <hr/>
+      <ul>
+        <!-- 给第num个元素加上class -->
+        <li v-for="(item,index) in items" :class="{active: index == num ? true : false}">{{item.message}}</li>
+      </ul>
+      <hr/>
+      <ul>
+        <!-- 给第num个元素加上class -->
+        <li v-for="(item,index) in items" :class="{active: index == num}">{{item.message}}</li>
+      </ul>
       
   </div>  
 </body>
@@ -21,6 +37,7 @@
 var vm = new Vue( {  
         el: '#app',  
         data: {
+          num:2,
           items:[
             {message:'香蕉'},
             {message:'橘子'},

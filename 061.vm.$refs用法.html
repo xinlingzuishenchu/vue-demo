@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <div id="app">
+        <p>{{message}}</p>
+        <input type="text" ref="info"> 
+        <button @click="get">点击</button>
+        <br/>
+        <hr/>
+        <p ref="item">我是p标签</p> 
+        <button @click="btn">点击</button>
+   </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message: 'hello vue'
+        },
+        methods: {
+          get: function () {
+            console.log(this.$refs.info) //获取ref定义的DOM节点
+            console.log(this.$refs.info.value) //获取DOM节点信息
+          },
+          btn: function () {
+            console.log(this.$refs.item)
+            console.log(this.$refs.item.innerHTML)
+          }
+        }
+
+    })
+
+    document.onclick = function(){
+        var str = vm.$refs;
+            console.log(str)
+            console.log(str.item.innerHTML)
+    }
+    
+</script>
+</html>
