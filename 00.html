@@ -11,12 +11,9 @@
 <body>
 <div id="box">
   
-  <ul>
-    <li v-for="(val,key,index) in arr">{{index}} -- {{key}} -- {{val}}</li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
+  <com-a></com-a>
+  <com-b></com-b>
+  <com-c></com-c>
   
 </div>
 
@@ -26,25 +23,99 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script type="text/javascript" src="js/vue-router.js"></script>
 <script type="text/javascript">
+          //准备一个空的实例对象
+          var Event = new Vue();
+
+          var A = {template:` <div>
+                                  <span>我是A组件</span> -> {{a}}
+                                  <input type="button" value="把A数据给C" @click="send" />
+                              </div>`,
+                              data(){
+                                return {
+                                  a:"我是a数据"
+                                }
+                              },
+                              methods:{
+                                send(){
+                                  Event.$emit('a-msg',this.a)
+                                }
+                              }
+
+          };
+          var B = {template:` <div>
+                                  <span>我是B组件</span> -> {{a}}
+                                  <input type="button" value="把B数据给C" @click="send"/>
+                              </div>`,
+                              data(){
+                                return {
+                                  a:"我是b数据"
+                                }
+                              },
+                              methods:{
+                                send(){
+                                  Event.$emit('b-msg',this.a);
+                                }
+                              }
+
+          };
+          var C = {template:` <div>
+                                  <h3>我是B组件</h3>
+                                  <span>接收过来的a数据：{{a}}</span> 
+                                  <br/> 
+                                  <span>接收过来的a数据：{{b}}</span> 
+                              </div>`,
+                    data(){
+                        return{
+                          a:'',
+                          b:''
+                        }
+                    },
+                    mounted(){
+                      //第一种
+
+                        // var _this = this;
+                        // Event.$on('a-msg',function(a){
+                        //       _this.a = a;
+                        // });
+
+                        //第二种
+                        Event.$on('a-msg',function(a){
+                              this.a = a;
+                        }.bind(this));
+
+
+                        Event.$on('b-msg',function(a){
+                              this.b = a;
+                        }.bind(this));
+                    }
+        };
+
 
           var vm = new Vue({
             el:"#box",
             data:{
-              onOff:true,
-              arr:{
-                a:111,
-                b:222,
-                c:333
-              }
             },
-            methods:{
-              change(){
-                this.onOff = !this.onOff;
-              }
+            components:{
+                  'com-a':A,
+                  'com-b':B,
+                  'com-c':C
             }
           })
 
 
+          //组件之间通信步骤
 
+          //准备一个空的实例对象
+          // var Event = new Vue();
+
+          // //发送数据
+          // Event.$emit('事件名称',数据)
+
+          // //接收数据
+          // Event.$on('事件名称',function(data){
+          //         //data  就是接收过来的数据
+          // }.bind(this));
+
+          //$emit和$on的'事件名称'要对应'
   </script>
 </html>
