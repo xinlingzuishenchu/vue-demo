@@ -14,14 +14,14 @@
       <input placeholder="请输入用户名" key="username-input">
     </template>
     <template v-else>
-      <label>邮箱</label>
+      <label>用户名</label>
       <input placeholder="请输入邮箱" key="email-input">
     </template>
 
     <button v-on:click="btn">切换登录方式</button>
   </div>  
     
-<!-- 注意，<label> 元素仍然会被高效地复用，因为它们没有添加 key 属性。 -->
+<!-- 注意，Vue默认会高效的复用元素，<label> 元素仍然会被高效地复用，因为它们没有添加 key 属性。 input添加了唯一标识key就不会被复用，会被重新渲染-->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
