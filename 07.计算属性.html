@@ -17,7 +17,13 @@
         <span>{{foo}}</span>
         <button v-on:click="btn">点击改变</button>
         <div>{{now}}</div>
+
+
+        <!-- 获取dom结构自定义属性 -->
+        <button data-str="1234" @click="get_btn($event)">获取自身属性</button>
     </div>
+
+    
     
 
 </body>
@@ -39,6 +45,10 @@
         btn:function(){
           this.foo = 'abc';
           console.log(this.now)
+        },
+        get_btn(ev){
+          //获取dom节点ev.srcElement
+          console.log(ev.srcElement,ev.srcElement.dataset.str)
         }
       },
       computed:{

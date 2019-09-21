@@ -25,7 +25,7 @@
   <!-- 这里会报错不显示 -->
        {{msg}}
 
-
+    
    </div>
 
 
@@ -49,7 +49,7 @@
 
             }).$mount("#box"); 
 
-
+            vm.$log();//在控制台打印vm的数据
             //自定义属性msg
             console.log(vm.$options)
             console.log(vm.$options.msg)
